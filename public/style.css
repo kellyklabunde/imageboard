@@ -1,0 +1,164 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: white;
+    margin: 0;
+    display: flex;
+}
+
+button {
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: none;
+}
+
+#loadMore {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* HEADER */
+
+header {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    height: 55px;
+    border-bottom: 1px solid black;
+}
+
+.left {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.right {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.name {
+    font-size: 30px;
+    font-family: "Shadows Into Light", cursive;
+}
+
+.pine {
+    width: 50px;
+    height: 50px;
+    margin-left: 5px;
+}
+
+.uploadImage {
+    font-family: "Lato", sans-serif;
+    font-size: 15px;
+}
+
+.upload {
+    width: 40px;
+    height: 40px;
+}
+
+/* UPLOAD IMAGE FORM */
+
+.form {
+    display: flex;
+    position: relative;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+}
+
+/* IMAGEBOARD */
+
+.images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.image {
+    width: 30%;
+    height: 400px;
+    background-color: rgb(126, 158, 119);
+    text-align: center;
+    border: 1px solid rgb(136, 133, 133);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.image img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+/* MODAL */
+
+.modal-component {
+    background-color: rgba(250, 246, 246, 0.9);
+    border: 1px solid rgb(126, 158, 119);
+    border-radius: 6px;
+    padding: 10px;
+    position: fixed;
+    top: 10%;
+    bottom: 10%;
+    left: 10%;
+    right: 10%;
+    font-family: "Lato", sans-serif;
+    align-items: center;
+    display: flex;
+}
+
+.modal-component img {
+    max-height: 80%;
+    max-width: 70%;
+    display: inline-block;
+    align-items: center;
+    margin-left: auto;
+}
+
+#buttonClose {
+    align-self: flex-start;
+    margin-left: auto;
+}
+
+.imageInfo {
+    display: inline-block;
+    margin-left: 50px;
+    align-items: center;
+}
+
+.next {
+    height: 100px;
+    width: 100px;
+    opacity: 0.7;
+    right: 0;
+    transform: translate(100%, 0);
+    position: absolute;
+    top: 45%;
+}
+
+.previous {
+    height: 100px;
+    width: 100px;
+    opacity: 0.7;
+    transform: translate(-100px, 0);
+    position: absolute;
+    top: 45%;
+}
