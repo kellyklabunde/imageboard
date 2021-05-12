@@ -28,11 +28,21 @@ Vue.component("modal-component", {
         },
         handleNext() {
             console.log("clicked on next");
-            location.hash = this.imageId - 1;
+            if (this.imageId <= 1) {
+                console.log("it is bigger!!!");
+                // chamar para sumir botao direito
+            } else {
+                location.hash = this.imageId - 1;
+            }
         },
         handlePrevious() {
             console.log("clicked on previous");
-            location.hash = parseInt(this.imageId) + 1;
+            if (this.imageId >= 18) {
+                console.log("it is smaller!!!");
+                // chamar para sumir botao esquerdo
+            } else {
+                location.hash = parseInt(this.imageId) + 1;
+            }
         },
     },
 });

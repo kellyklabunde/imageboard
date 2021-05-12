@@ -59,7 +59,7 @@
             <img @click="handlePrevious" class="previous" src="/images/previous.png"/>
             <img :src="image.url" />
             <div class=imageInfo>
-                <h6>Uploaded from {{image.username}} at {{new Date(image.created_at).toLocaleDateString('de-DE')}}</h6>
+                <p>Uploaded from {{image.username}} at {{new Date(image.created_at).toLocaleDateString('de-DE')}}</p>
                 <h3>{{image.title}}</h3>
                 <p>{{image.description}}</p>
                 
@@ -72,15 +72,16 @@
 
     <script type="text/x-template" id="comments-component-template">
         <div class="comments-component">
+            <div class="comments">
+                <h3>Comments:</h3>
+                <li class="comments" v-for="comment in comments">
+                    {{comment.username}} said: {{comment.comment}} at {{new Date(comment.created_at).toLocaleDateString('de-DE')}}
+                </li> 
+            </div>
             <h3>Add a comment:</h3>
             <input v-model="username" type="text" name="username" placeholder="username">
-            <input v-model="comment" type="text" name="comment" placeholder="comment">
-            <button @click="submitComment">SUBMIT</button>
-            <div class="comments">
-                <ul class="comments" v-for="comment in comments">
-                    {{comment.username}}, {{comment.comment}} on {{comment.created_at}}
-                </ul> 
-            </div>
+            <textarea v-model="comment" type="text" name="comment" placeholder="comment" wrap="hard"></textarea>
+            <button @click="submitComment">SUBMIT</button>   
         </div>
     </script>
 

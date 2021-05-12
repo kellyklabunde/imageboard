@@ -155,7 +155,7 @@ header {
 .modal-component img {
     max-height: 80%;
     max-width: 70%;
-    display: inline-block;
+    display: flex;
     align-items: center;
     margin-left: auto;
 }
@@ -166,14 +166,15 @@ header {
 }
 
 .imageInfo {
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     margin-left: 50px;
-    align-items: center;
 }
 
-.imageInfo h6 {
+.imageInfo p {
     font-family: "Lato", sans-serif;
-    font-size: 15px;
+    margin: 0;
 }
 
 .comments-component {
@@ -181,15 +182,40 @@ header {
     flex-direction: column;
     font-family: "Lato", sans-serif;
     font-size: 15px;
+    width: 250px;
+}
+
+.comments h3 {
+    border-top: 2px solid grey;
+    padding-top: 10px;
+    margin-bottom: 5px;
+}
+
+.comments li {
+    list-style-type: none;
+    margin-bottom: 3px;
+}
+
+.comments-component h3 {
+    margin-bottom: 5px;
+    margin-top: 10px;
 }
 
 .comments-component input {
     font-size: 15px;
+    margin-top: 5px;
 }
 
-input[name="comment"] {
-    height: 50px;
-    padding: 0;
+.comments-component textarea {
+    font-size: 15px;
+    margin-top: 5px;
+    font-family: "Lato", sans-serif;
+}
+
+textarea[name="comment"] {
+    height: 80px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .comments-component button {
