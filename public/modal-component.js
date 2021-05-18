@@ -4,12 +4,14 @@ Vue.component("modal-component", {
     data: function () {
         return {
             image: {},
+            hideNext: true,
+            hidePrevious: true,
         };
     },
     mounted() {
         location.hash = this.imageId;
-
         this.imageInfo();
+        this.checkImageButton();
     },
     watch: {
         // this function will get called, whenever this.id (from props) changes
@@ -26,23 +28,34 @@ Vue.component("modal-component", {
                 this.image = response.data;
             });
         },
+        checkImageButton() {
+            if (this.imageId == 1) {
+                this.hideNext = false;
+            }
+            if (this.imageId == 18) {
+                this.hidePrevious = false;
+            }
+        },
         handleNext() {
             console.log("clicked on next");
-            if (this.imageId <= 1) {
-                console.log("it is bigger!!!");
-                // chamar para sumir botao direito
+            this.hidePrevious = true;
+            if (this.imageId <= 2) {
+                this.hideNext = false;
+                location.hash = this.imageId - 1;
             } else {
                 location.hash = this.imageId - 1;
             }
         },
         handlePrevious() {
             console.log("clicked on previous");
-            if (this.imageId >= 18) {
-                console.log("it is smaller!!!");
-                // chamar para sumir botao esquerdo
+            this.hideNext = true;
+            if (this.imageId >= 17) {
+                this.hidePrevious = false;
+                location.hash = parseInt(this.imageId) + 1;
             } else {
                 location.hash = parseInt(this.imageId) + 1;
             }
+            console.log("clicked on previous");
         },
     },
 });

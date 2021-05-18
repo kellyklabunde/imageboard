@@ -55,8 +55,8 @@
 
     <script type="text/x-template" id="modal-component-template">
         <div class="modal-component">
-            <img @click="handleNext" class="next" src="/images/next.png"/>
-            <img @click="handlePrevious" class="previous" src="/images/previous.png"/>
+            <img @click="handleNext" class="next" src="/images/next.png" v-if="hideNext"/>
+            <img @click="handlePrevious" class="previous" src="/images/previous.png" v-if="hidePrevious"/>
             <img :src="image.url" />
             <div class=imageInfo>
                 <p>Uploaded from {{image.username}} at {{new Date(image.created_at).toLocaleDateString('de-DE')}}</p>

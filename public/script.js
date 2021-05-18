@@ -4,7 +4,6 @@ new Vue({
     el: "#main",
     data: {
         images: [],
-        hideButton: false,
         title: "",
         username: "",
         description: "",
@@ -30,7 +29,6 @@ new Vue({
     watch: {
         images: function () {
             const oldestImage = this.images[this.images.length - 1];
-
             this.more = oldestImage.id !== oldestImage.lowestid;
         },
     },
@@ -40,10 +38,6 @@ new Vue({
 
             axios.get(`/images/more?lastId=${lastId}`).then((result) => {
                 this.images.push(...result.data);
-                if (lastId == 1) {
-                    console.log("inside if block");
-                    // this.hideButton = true;
-                }
             });
         },
 
