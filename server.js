@@ -60,6 +60,12 @@ app.get("/images/:image", (req, res) => {
         });
 });
 
+app.get("/showlatestimage", (req, res) => {
+    db.getLatestImg().then((result) => {
+        res.json(result.rows);
+    });
+});
+
 app.post("/upload", uploader.single("image"), upload, (req, res) => {
     console.log("we've made it inside the POST /upload route handler");
     console.log("which means: the image is already uploaded to s3");
@@ -71,7 +77,7 @@ app.post("/upload", uploader.single("image"), upload, (req, res) => {
 
     db.uploadImage(title, description, username, url)
         .then((result) => {
-            console.log(result);
+            // console.log(result);
             res.json(result.rows);
         })
         .catch((e) => {
@@ -84,7 +90,7 @@ app.post("/upload", uploader.single("image"), upload, (req, res) => {
 app.get("/comments/:imageId", (req, res) => {
     db.getAllComments(req.params.imageId)
         .then((result) => {
-            console.log(result.rows);
+            // console.log(result.rows);
             res.json(result.rows);
         })
         .catch((e) => {

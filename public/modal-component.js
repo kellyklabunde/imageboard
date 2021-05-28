@@ -6,11 +6,13 @@ Vue.component("modal-component", {
             image: {},
             hideNext: true,
             hidePrevious: true,
+            latestImage: 1,
         };
     },
     mounted() {
         location.hash = this.imageId;
         this.imageInfo();
+        this.getLatestImage();
         this.checkImageButton();
     },
     watch: {
@@ -28,11 +30,17 @@ Vue.component("modal-component", {
                 this.image = response.data;
             });
         },
+        getLatestImage() {
+            axios.get("/showlatestimage").then((response) => {
+                this.latestImage = response.data[0].id;
+                console.log(this.latestImage);
+            });
+        },
         checkImageButton() {
             if (this.imageId == 1) {
                 this.hideNext = false;
             }
-            if (this.imageId == 18) {
+            if (this.imageId == this.latestImage) {
                 this.hidePrevious = false;
             }
         },

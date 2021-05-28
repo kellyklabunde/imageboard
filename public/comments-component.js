@@ -34,6 +34,8 @@ Vue.component("comments-component", {
                 .then((response) => {
                     console.log("RESPONSE DATA", response.data);
                     this.comments.unshift(response.data);
+                    this.comment = "";
+                    this.username = "";
                 });
         },
         getComment() {

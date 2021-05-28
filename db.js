@@ -43,7 +43,11 @@ module.exports.addComment = (comment, username, image_id) => {
 
 module.exports.getCommentsByImageId = (id) => {
     return db.query(
-        "SELECT * from comments WHERE image_id = $1 ORDER BY id DESC",
+        "SELECT * FROM comments WHERE image_id = $1 ORDER BY id DESC",
         [id]
     );
+};
+
+module.exports.getLatestImg = () => {
+    return db.query("SELECT id FROM images ORDER BY id DESC LIMIT 1");
 };
