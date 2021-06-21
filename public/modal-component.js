@@ -13,7 +13,7 @@ Vue.component("modal-component", {
         location.hash = this.imageId;
         this.imageInfo();
         this.getLatestImage();
-        this.checkImageButton();
+        // this.checkImageButton();
     },
     watch: {
         // this function will get called, whenever this.id (from props) changes
@@ -33,17 +33,25 @@ Vue.component("modal-component", {
         getLatestImage() {
             axios.get("/showlatestimage").then((response) => {
                 this.latestImage = response.data[0].id;
-                console.log(this.latestImage);
+                if (this.imageId == 1) {
+                    this.hideNext = false;
+                }
+                if (this.imageId == this.latestImage) {
+                    this.hidePrevious = false;
+                }
             });
         },
-        checkImageButton() {
-            if (this.imageId == 1) {
-                this.hideNext = false;
-            }
-            if (this.imageId == this.latestImage) {
-                this.hidePrevious = false;
-            }
-        },
+        // checkImageButton() {
+        //     console.log("check image button");
+        //     console.log(this.latestImage);
+        //     console.log(this.imageId);
+        //     if (this.imageId == 1) {
+        //         this.hideNext = false;
+        //     }
+        //     if (this.imageId == this.latestImage) {
+        //         this.hidePrevious = false;
+        //     }
+        // },
         handleNext() {
             console.log("clicked on next");
             this.hidePrevious = true;
@@ -57,13 +65,12 @@ Vue.component("modal-component", {
         handlePrevious() {
             console.log("clicked on previous");
             this.hideNext = true;
-            if (this.imageId >= 17) {
+            if (this.imageId >= this.latestImage) {
                 this.hidePrevious = false;
                 location.hash = parseInt(this.imageId) + 1;
             } else {
                 location.hash = parseInt(this.imageId) + 1;
             }
-            console.log("clicked on previous");
         },
     },
 });

@@ -61,7 +61,9 @@ app.get("/images/:image", (req, res) => {
 });
 
 app.get("/showlatestimage", (req, res) => {
+    console.log("latestid");
     db.getLatestImg().then((result) => {
+        console.log("latestid");
         res.json(result.rows);
     });
 });
