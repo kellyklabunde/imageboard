@@ -68,14 +68,17 @@ app.get("/showlatestimage", (req, res) => {
     });
 });
 
-app.post("/upload", uploader.single("image"), upload, (req, res) => {
+// app.post("/upload", uploader.single("image"), upload, (req, res) => { #WITH AWS
+app.post("/upload", uploader.single("image"), (req, res) => {
     console.log("we've made it inside the POST /upload route handler");
     console.log("which means: the image is already uploaded to s3");
 
     let title = req.body.title;
     let description = req.body.description;
     let username = req.body.username;
-    let url = config.s3Url + req.file.filename;
+    // let url = config.s3Url + req.file.filename; #WITH AWS
+    let url = "http://127.0.0.1:8080/" + req.file.filename;
+    console.log(url)
 
     db.uploadImage(title, description, username, url)
         .then((result) => {

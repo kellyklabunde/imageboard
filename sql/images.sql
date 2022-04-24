@@ -1,8 +1,8 @@
 -- whenever you make any update to this file,
 -- you need to RUN the file again with `psql -d imageboard -f sql/images.sql || heroku pg:psql -f tables/signatures.sql` 
 
-DROP TABLE IF EXISTS images;
-DROP TABLE IF EXISTS comments;
+DROP TABLE IF EXISTS images CASCADE;
+DROP TABLE IF EXISTS comments CASCADE;
 
 CREATE TABLE images(
     id SERIAL PRIMARY KEY,
