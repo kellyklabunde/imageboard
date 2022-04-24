@@ -19,4 +19,6 @@ CREATE TABLE comments(
     username VARCHAR NOT NULL,
     image_id INTEGER NOT NULL REFERENCES images(id),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-)
+);
+
+INSERT INTO images (url, username, title, description) VALUES ('http://127.0.0.1:8080/foto1.jpg', 'Anna', 'German caribean', 'last summer in the German Alps'), ('http://127.0.0.1:8080/foto2.jpg', 'Harry', 'Medieval Castle', 'This castle is stunning!');
