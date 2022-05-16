@@ -9,19 +9,24 @@ Stack used: Vue.js, Node.js, AWS, PostgreSQL
 
 # How to Start
 
-create database
+1. Create database
+
+go to ..imageboard and execute:
 
 ```
 psql -U postgres -d imageboard -f sql\images.sql
 ```
 
-go to ..imageboard\uploads
+2. Run local folder as HTTP server
+
+go to ..imageboard\uploads and execute:
 
 ```
 http-server ./
 ```
+3. Start the application
 
-go to ..imageboard
+go to ..imageboard and execute:
 
 ```
 node server.js
