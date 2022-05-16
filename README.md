@@ -12,7 +12,7 @@ Stack used: Vue.js, Node.js, AWS, PostgreSQL
 create database
 
 ```
-psql -U postgres -d imageboard -f ..imageboard\sql\images.sql
+psql -U postgres -d imageboard -f sql\images.sql
 ```
 
 go to ..imageboard\uploads
